@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mongo="http://www.springframework.org/schema/data/mongo" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd
+        http://www.springframework.org/schema/data/mongo     
+        http://www.springframework.org/schema/data/mongo/spring-mongo-1.8.xsd"  
+	default-autowire="byName">
+
+	<!-- 启动annotation支持 -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.ems.daoImpl,com.ems.serviceImpl,com.ems.rest"></context:component-scan>
+	<mvc:annotation-driven/>
+	
+	<context:property-placeholder location="classpath:jdbc.properties,classpath:redis.properties" />
+	
+	<!-- 导入mongodb的配置文件 -->
+    <import resource="jdbc-config.xml"/>
+    
+	<!-- 导入redis的配置文件 -->
+    <import resource="redis-config.xml"/>
+	
+	<!-- 导入mongodb的配置文件 -->
+    <!-- <import resource="mongodb-config.xml"/> --> 
+    
+</beans>
